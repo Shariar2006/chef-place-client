@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.transparent{
+    background: transparent;
+    backdrop-filter: blur(20px);
+}
+
+.font1{
+    font-family: 'Zen Tokyo Zoo', cursive;
+}
+.font2{
+    font-family: 'Inter', cursive;
+}
+.font3{
+    font-family: 'Cinzel', cursive;
+}
+.font4{
+    font-family: 'Anton', cursive;
+}
