@@ -1,0 +1,26 @@
+[
+    {
+        "badgeName": "Silver",
+        "price": 19.99,
+        "packageStatus": "2 days per week",
+        "tiffin": "Fruit juice.",
+        "eveningSnakes": "Chicken Noodles.",
+        "lunch": "Chicken Jali Kabab, Misty Dahi."
+    },
+    {
+        "badgeName": "Gold",
+        "price": 39.99,
+        "packageStatus": "4 days per week",
+        "tiffin": "Fruit juice.",
+        "eveningSnakes": "Chicken Noodles, Muffin.",
+        "lunch": "Chicken Jali Kabab, Misty Dahi, Egg Curry, Chicken Pasta."
+    },
+    {
+        "badgeName": "Platinum",
+        "price": 69.99,
+        "packageStatus": "Full Month",
+        "tiffin": "Fruit juice.",
+        "eveningSnakes": "Chicken Noodles, Muffin, Doughnut and Fruit Juice.",
+        "lunch": "Buffet lunch, which will consist of 30 items."
+    }
+]
