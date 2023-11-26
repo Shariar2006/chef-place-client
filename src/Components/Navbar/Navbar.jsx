@@ -1,8 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../../../public/logo.png'
 import '../../index.css'
+import { useContext } from "react";
+import { AuthContext } from "../../AuthContext/AuthProvider";
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+    }
 
     const navLink = <div className="lg:flex text-lg font-semibold">
         <li><NavLink to={'/'}
@@ -14,10 +22,10 @@ const Navbar = () => {
         <li><NavLink to={'/upcomingMeals'}
             className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#FFF1B0] text-lg font-semibold rounded-lg px-1 py-2 " : "mx-1 text-[#EB671C]"}
         >Upcoming Meals</NavLink></li>
-        <li><NavLink to={'/login'}
-            className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#FFF1B0] text-lg font-semibold rounded-lg px-1 py-2 " : "mx-1 text-[#EB671C]"}
-        >Join Us</NavLink></li>
-        </div>
+
+
+
+    </div>
 
     return (
         <div>
@@ -37,6 +45,43 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal px-1">
                         {navLink}
                     </ul>
+                </div>
+                <div>
+                    {
+                        user?.email ? <>
+                            <div className="dropdown dropdown-end">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    {
+                                        user?.photoURL ?
+                                            <img className="rounded-full w-9 mx-1" src={user.photoURL} alt="" />
+                                            :
+                                            <img className="rounded-full w-9 mx-1" src='https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg' alt="" />
+                                    }
+                                </label>
+                                <ul tabIndex={0} className="my-3 z-[1] p-2 py-10 shadow menu menu-sm dropdown-content rounded-box w-52 text-center border-4 border-[#EB671C] text-[#EB671C] bg-base-200 font2">
+                                    {
+                                        user?.photoURL ?
+                                            <img className="rounded-full w-9 mx-auto" src={user.photoURL} alt="" />
+                                            :
+                                            <img className="rounded-full w-9 mx-auto" src='https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg' alt="" />
+                                    }
+                                    <p className="text-xs lg:text-lg ">{user.displayName}</p>
+                                    <p className="text-xs mb-2">{user.email}</p>
+                                    <hr />
+                                    <div className="text-start mt-4 ml-2 text-xs lg:text-base">
+                                        <h1>Dashboard</h1>
+                                    <button onClick={handleLogOut}
+                                        className=" "
+                                    >Log Out</button>
+                                    </div>
+                                </ul>
+                            </div>
+
+                        </> :
+                            <li><NavLink to={'/login'}
+                                className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#FFF1B0] text-lg font-semibold rounded-lg px-1 py-2 " : "mx-1 text-[#EB671C]"}
+                            >Join Us</NavLink></li>
+                    }
                 </div>
             </div>
         </div>

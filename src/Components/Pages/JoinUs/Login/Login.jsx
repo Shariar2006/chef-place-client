@@ -14,7 +14,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const form = location.state?.from?.pathname || "/"
-    console.log(location, form)
+    // console.log(location, form)
 
     const handleLogin = e => {
         e.preventDefault()
@@ -25,28 +25,36 @@ const Login = () => {
         loginUser(email, password)
             .then(result => {
                 console.log(result.user)
+                if (result.user) {
+                    navigate(form, { replace: true })
+                }
                 Swal("Good job!", "You are successfully Logged in!", "success");
-                navigate(form, { replace: true })
             })
             .catch(error => { console.log(error) })
     }
 
     const loginWithGoogle = () => {
         googleLogin()
-        .then(res => {
-            const userInfo = {
-                email: res.user.email,
-                name: res.user.displayName,
-                photo: res.user.photoURL
-            }
-            console.log(res.user,userInfo)
-            // axiosSource.post('/users', userInfo)
-            // .then(res=>{
-            //     console.log(res.data)
-            // })
-            Swal("Good job!", "You are successfully Logged in!", "success");
-            navigate(form, { replace: true })
-        })
+            .then(res => {
+                const userInfo = {
+                    email: res.user.email,
+                    name: res.user.displayName,
+                    photo: res.user.photoURL
+                }
+                console.log(res.user, userInfo)
+                axiosPublic.post('/users', userInfo)
+                .then(res=>{
+                    console.log(res.data)
+                    Swal.fire({
+                        icon: "success",
+                        title: "Good job!",
+                        text: "You are successfully Logged in!",
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    navigate(form, { replace: true })
+                })
+            })
             .catch(error => { console.log(error) })
     }
 
@@ -73,7 +81,7 @@ const Login = () => {
                         <input className='btn border-none bg-[#FFF1B0] hover:bg-[#EB671C] text-center text-[#EB671C] hover:text-[#FFF1B0] py-3 rounded-lg text-xl font-bold w-full my-4' type="submit" value="Login" />
                     </div>
                     <p className='divider'>or</p>
-                    <div onClick={loginWithGoogle} className='flex items-center mt-4 justify-center googleLogin rounded-lg cursor-pointer'>
+                    <div onClick={loginWithGoogle} className='flex items-center mt-4 justify-center rounded-lg cursor-pointer border hover:bg-gray-800'>
                         <img className='w-10 h-10 ' src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="" />
                         <span className='text-[#FFF1B0] text-sm font-semibold'>Continue With Google</span>
                     </div>

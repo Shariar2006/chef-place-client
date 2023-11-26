@@ -6,11 +6,12 @@ import '../../../../index.css'
 import Swal from "sweetalert2";
 import { useContext } from 'react';
 import { AuthContext } from '../../../../AuthContext/AuthProvider';
+import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 
 
 const Register = () => {
     const { createUser, logOut, handleUpdateProfile } = useContext(AuthContext)
-
+    const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
     const { register, handleSubmit, formState: { errors }, } = useForm()
 
@@ -19,43 +20,29 @@ const Register = () => {
 
         createUser(data.email, data.password)
             .then(result => {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Register successfully",
-                    showConfirmButton: false,
-                    timer: 1000
-                });
-
-                logOut()
-                navigate('/login')
-
-                handleUpdateProfile(data.name, data.photo)
-
-
-                // const userInfo = {
-                //     email: data.email,
-                //     name: data.name,
-                //     photo: data.photo
-                // }
+                const userInfo = {
+                    email: data.email,
+                    name: data.name,
+                    photo: data.photo
+                }
                 console.log(result.user)
-                // axiosSource.post('/users', userInfo)
-                //     .then(res => {
-                //         if (res.data.insertedId) {
-
-                //             Swal.fire({
-                //                 position: "top-end",
-                //                 icon: "success",
-                //                 title: "Register successfully",
-                //                 showConfirmButton: false,
-                //                 timer: 1500
-                //             });
-
-                //             logOut()
-                //             navigate('/login')
-                //         }
-                //         handleUpdateProfile(data.name, data.photo)
-                //     })
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Register successfully",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            
+                            logOut()
+                            navigate('/login')
+                        }
+                        handleUpdateProfile(data.name, data.photo)
+                    })
 
             })
             .catch(err => { console.log(err) })
@@ -93,16 +80,17 @@ const Register = () => {
                         {errors.password?.type === 'pattern' && <span className="text-red-600 font-bold mt-1">Password must be one uppercase, one lowercase,one number and one special characters</span>}
                     </div>
 
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text text-[#FFF1B0] text-xl font-bold">Photo url</span>
+                        </label>
+                        <input type="url" {...register("photo")} placeholder="Photo URL" className="inputFild input input-bordered text-[#FFF1B0] text-lg font2 font-semibold" />
+                    </div>
+
 
                     <div>
-                        <input className='btn border-none bg-[#FFF1B0] hover:bg-[#EB671C] text-center text-[#EB671C] hover:text-[#FFF1B0] py-3 rounded-lg text-xl font-bold w-full my-4' type="submit" value="Login" />
+                        <input className='btn border-none bg-[#FFF1B0] hover:bg-[#EB671C] text-center text-[#EB671C] hover:text-[#FFF1B0] py-3 rounded-lg text-xl font-bold w-full my-4' type="submit" value="Register" />
                     </div>
-                    <p className='divider'>or</p>
-                    <div className='flex items-center mt-4 justify-center googleLogin rounded-lg cursor-pointer'>
-                        <img className='w-10 h-10 ' src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="" />
-                        <span className='text-[#FFF1B0] text-sm font-semibold'>Continue With Google</span>
-                    </div>
-
                     <p className='text-[#9CA3AF] text-base font-semibold text-center mt-4'>Already have an account? Please <Link to='/login' className='text-[#FFF1B0] underline'>Login</Link></p>
 
                 </form>
