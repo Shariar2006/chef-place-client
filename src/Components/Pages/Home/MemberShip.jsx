@@ -27,7 +27,7 @@ const MemberShip = () => {
                 {
                     premiumPackage.map(singlePackage => <div key={singlePackage.badgeName} className="w-[375px] min-h-[557px] text-center text-[#EB671C] border-l-2 border-r-2">
                         <h1 className="font4 text-3xl bg-[#F3E6A8] py-2">{singlePackage?.badgeName}</h1>
-                        <h1 className="font4 my-5 text-8xl">$ {singlePackage?.price}</h1>
+                        <h1 className="font4 my-5 text-8xl">$ {singlePackage?.price}<span className="text-lg">/month</span></h1>
                         <hr />
                         <div className="my-2 h-[304px]">
                             <p className="font4 text-2xl">Package Status : {singlePackage?.packageStatus}</p>
