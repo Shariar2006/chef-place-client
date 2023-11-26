@@ -14,7 +14,7 @@ const Navbar = () => {
         <li><NavLink to={'/upcomingMeals'}
             className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#FFF1B0] text-lg font-semibold rounded-lg px-1 py-2 " : "mx-1 text-[#EB671C]"}
         >Upcoming Meals</NavLink></li>
-        <li><NavLink to={'/joinUs'}
+        <li><NavLink to={'/login'}
             className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#FFF1B0] text-lg font-semibold rounded-lg px-1 py-2 " : "mx-1 text-[#EB671C]"}
         >Join Us</NavLink></li>
         </div>
