@@ -7,6 +7,7 @@ import Register from "../Components/Pages/JoinUs/Register/Register";
 import AllMeals from "../Components/Pages/AllMeals/AllMeals";
 import DashboardLayout from "../Components/Dashboard/DashboardLayout";
 import RequestedMeals from "../Components/Dashboard/UserDashboard/RequestedMeals";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
   //dashboard
   {
     path: '/dashboard',
-    element: <DashboardLayout></DashboardLayout>,
+    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     children: [
 
       //normal user
