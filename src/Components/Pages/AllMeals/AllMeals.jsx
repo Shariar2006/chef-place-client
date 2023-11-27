@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FoodCard from "../../../Carts/MenuCard/FoodCard";
 import useMenu from "../../../Hooks/useMenu";
-import InfiniteScroll from 'react-infinite-scroll-component';
+// import InfiniteScroll from 'react-infinite-scroll-component';
 
 
 
@@ -48,7 +48,8 @@ const AllMeals = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {
                     menu?.filter((menuItem) => {
-                        return search.toLocaleLowerCase() === '' ? menuItem : menuItem?.category.toLocaleLowerCase().includes(search) || menuItem?.name.toLocaleLowerCase().includes(search)
+                        return search.toLocaleLowerCase() === '' ? menuItem : menuItem?.category.toLocaleLowerCase().includes(search) || menuItem?.name.toLocaleLowerCase().includes(search) 
+                        // || parseInt(menuItem?.price).includes(search)
                     }).map(item => <FoodCard key={item._id} item={item}></FoodCard>)
                 }
             </div>

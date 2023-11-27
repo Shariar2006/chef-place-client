@@ -1,13 +1,21 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { Rating } from "@smastrom/react-rating";
 import '../../../index.css'
 import { AwesomeButton } from "react-awesome-button";
+import { useContext } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../../AuthContext/AuthProvider";
+import useCart from "../../../Hooks/useCart";
 
 const MealDetails = () => {
     const axiosPublic = useAxiosPublic()
-
+    const { user } = useContext(AuthContext)
+    // const { name, recipe, image, price, _id } = item || {}
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [, refetch] = useCart()
     const { id } = useParams()
 
     const { data = {} } = useQuery({
@@ -17,7 +25,54 @@ const MealDetails = () => {
             return res.data
         }
     })
-console.log(data)
+console.log(data.name)
+
+const handleRequest = () => {
+
+    if (user && user.email) {
+        const cartItem = {
+            menuId: data._id,
+            email: user.email,
+            name: data.name,
+            image: data.image,
+            price: data.price,
+            like: 0,
+            review: 0,
+            status: 'Pending'
+        }
+        axiosPublic.post('/carts', cartItem)
+        .then(res=>{
+            console.log(res,res.data)
+            if(res.data.insertedId){
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${data.name} added to the cart`,
+                    showConfirmButton: false,
+                    timer: 2000
+                  });
+                  refetch()
+            }
+        })
+
+    } else {
+
+        Swal.fire({
+            title: "You are not Logged In!",
+            text: "Please Login to add to cart!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Log In!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                navigate('/login', { state: { from: location } })
+            }
+        });
+
+    }
+}
 
     return (
         <div>
@@ -39,7 +94,9 @@ console.log(data)
                         <p className=" text-[#FFF1B0] font3">Likes : {data?.like}</p>
                         <p className=" text-[#FFF1B0] font3">Review : {data?.review}</p>
 
-                        <div className="card-actions justify-center font3">
+                        <div 
+                        onClick={() => { handleRequest(data) }}
+                         className="card-actions justify-center font3">
                             <AwesomeButton type='secondary'>Meal request</AwesomeButton>
                         </div>
                     </div>

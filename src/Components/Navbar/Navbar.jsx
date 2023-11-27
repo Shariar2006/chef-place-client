@@ -71,7 +71,7 @@ const Navbar = () => {
                                     <p className="text-xs mb-2">{user.email}</p>
                                     <hr />
                                     <div className=" mt-4 ml-2 text-xs lg:text-base">
-                                        <button className="btn text-[#EB671C]">Dashboard</button>
+                                        <NavLink to={'/dashboard/requestedMeals'}><button className="btn text-[#EB671C]">Dashboard</button></NavLink>
                                         <button onClick={handleLogOut}
                                             className="text-[#EB671C] btn"
                                         > <LuLogOut className="text-xl font-bold"></LuLogOut>

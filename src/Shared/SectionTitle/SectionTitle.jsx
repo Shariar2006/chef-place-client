@@ -2,13 +2,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import '../../index.css'
 
-const SectionTitle = ({subTitle, headerTitle}) => {
+const SectionTitle = ({ subTitle, headerTitle }) => {
     return (
         <div className="my-10 text-center">
-                <h1 className="font4 text-2xl md:text-5xl text-[#EB671C]">{headerTitle}</h1>
-                <div className="divider font2 text-[#FFF1B0]">Chef's Place</div>
-                <p className='font4 text-lg md:text-2xl text-[#EB671C]'>{subTitle}</p>
-            </div>
+            <h1 className="font4 text-2xl md:text-5xl text-[#EB671C]">{headerTitle}</h1>
+            <div className="divider font2 text-[#FFF1B0]">Chef's Place</div>
+            <p className='font4 text-lg md:text-2xl text-[#EB671C]'>{subTitle}</p>
+        </div>
     );
 };
 

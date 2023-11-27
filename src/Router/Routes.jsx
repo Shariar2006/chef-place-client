@@ -5,6 +5,8 @@ import MealDetails from "../Components/Pages/MealDetails/MealDetails";
 import Login from "../Components/Pages/JoinUs/Login/Login";
 import Register from "../Components/Pages/JoinUs/Register/Register";
 import AllMeals from "../Components/Pages/AllMeals/AllMeals";
+import DashboardLayout from "../Components/Dashboard/DashboardLayout";
+import RequestedMeals from "../Components/Dashboard/UserDashboard/RequestedMeals";
 
 
 const router = createBrowserRouter([
@@ -34,6 +36,19 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <Register></Register>
+  },
+  //dashboard
+  {
+    path: '/dashboard',
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+
+      //normal user
+      {
+        path: 'requestedMeals',
+        element: <RequestedMeals></RequestedMeals>
+      }
+    ]
   },
 ]);
 
