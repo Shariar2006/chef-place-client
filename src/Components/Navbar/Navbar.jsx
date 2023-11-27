@@ -3,6 +3,8 @@ import logo from '../../../public/logo.png'
 import '../../index.css'
 import { useContext } from "react";
 import { AuthContext } from "../../AuthContext/AuthProvider";
+import { LuLogOut } from "react-icons/lu";
+
 
 const Navbar = () => {
 
@@ -16,7 +18,7 @@ const Navbar = () => {
         <li><NavLink to={'/'}
             className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#FFF1B0] text-lg font-semibold rounded-lg px-1 py-2 " : "mx-1 text-[#EB671C]"}
         >Home</NavLink></li>
-        <li><NavLink to={'/meals'}
+        <li><NavLink to={'/allMeals'}
             className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#FFF1B0] text-lg font-semibold rounded-lg px-1 py-2 " : "mx-1 text-[#EB671C]"}
         >Meals</NavLink></li>
         <li><NavLink to={'/upcomingMeals'}
@@ -68,19 +70,23 @@ const Navbar = () => {
                                     <p className="text-xs lg:text-lg ">{user.displayName}</p>
                                     <p className="text-xs mb-2">{user.email}</p>
                                     <hr />
-                                    <div className="text-start mt-4 ml-2 text-xs lg:text-base">
-                                        <h1>Dashboard</h1>
-                                    <button onClick={handleLogOut}
-                                        className=" "
-                                    >Log Out</button>
+                                    <div className=" mt-4 ml-2 text-xs lg:text-base">
+                                        <button className="btn text-[#EB671C]">Dashboard</button>
+                                        <button onClick={handleLogOut}
+                                            className="text-[#EB671C] btn"
+                                        > <LuLogOut className="text-xl font-bold"></LuLogOut>
+                                            Log Out
+                                        </button>
                                     </div>
                                 </ul>
                             </div>
 
                         </> :
-                            <li><NavLink to={'/login'}
-                                className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#FFF1B0] text-lg font-semibold rounded-lg px-1 py-2 " : "mx-1 text-[#EB671C]"}
+                            <ul>
+                                <li><NavLink to={'/login'}
+                                className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#FFF1B0] text-lg font-semibold rounded-lg lg:px-1 py-2 lg:w-28" : "lg:mx-1 text-[#EB671C] lg:flex text-lg font-semibold lg:w-28"}
                             >Join Us</NavLink></li>
+                            </ul>
                     }
                 </div>
             </div>
