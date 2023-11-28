@@ -30,7 +30,7 @@ const useAxiosSecure = () => {
         }
         return Promise.reject(error)
     })
-    return 
+    return axiosSecure
 };
 
 export default useAxiosSecure;

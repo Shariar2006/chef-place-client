@@ -10,6 +10,7 @@ import RequestedMeals from "../Components/Dashboard/UserDashboard/RequestedMeals
 import PrivateRoute from "./PrivateRoute";
 import MyReview from "../Components/Dashboard/UserDashboard/MyReview";
 import MyProfile from "../Components/Dashboard/UserDashboard/MyProfile";
+import MenageUsers from "../Components/Dashboard/Admin/MenageUsers";
 
 
 const router = createBrowserRouter([
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
     element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     children: [
 
+      //admin route
+      {
+        path: 'menageUsers',
+        element: <MenageUsers></MenageUsers>
+      },
       //normal user
       {
         path: 'requestedMeals',
