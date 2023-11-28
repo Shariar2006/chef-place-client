@@ -8,9 +8,10 @@ import { TfiEmail } from "react-icons/tfi";
 import { NavLink, Outlet } from 'react-router-dom';
 import logo from '../../../public/logo.png'
 import { FaUsers } from "react-icons/fa";
+import useIsAdmin from "../../Hooks/useIsAdmin";
 
 const DashboardLayout = () => {
-    const isAdmin = true
+    const [isAdmin] = useIsAdmin()
     return (
         <div>
             <div className="flex max-w-7xl mx-auto">

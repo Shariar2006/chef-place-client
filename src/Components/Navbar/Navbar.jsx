@@ -4,11 +4,13 @@ import '../../index.css'
 import { useContext } from "react";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import { LuLogOut } from "react-icons/lu";
+import useIsAdmin from "../../Hooks/useIsAdmin";
 
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
+    const [isAdmin] = useIsAdmin()
 
     const handleLogOut = () => {
         logOut()
@@ -71,7 +73,10 @@ const Navbar = () => {
                                     <p className="text-xs mb-2">{user.email}</p>
                                     <hr />
                                     <div className=" mt-4 ml-2 text-xs lg:text-base">
+                                        {
+                                            user && isAdmin ? <NavLink to={'/dashboard/menageUsers'}><button className="btn text-[#EB671C]">Dashboard</button></NavLink> :
                                         <NavLink to={'/dashboard/requestedMeals'}><button className="btn text-[#EB671C]">Dashboard</button></NavLink>
+                                        }
                                         <button onClick={handleLogOut}
                                             className="text-[#EB671C] btn"
                                         > <LuLogOut className="text-xl font-bold"></LuLogOut>

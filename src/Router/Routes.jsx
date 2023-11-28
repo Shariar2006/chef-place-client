@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import MyReview from "../Components/Dashboard/UserDashboard/MyReview";
 import MyProfile from "../Components/Dashboard/UserDashboard/MyProfile";
 import MenageUsers from "../Components/Dashboard/Admin/MenageUsers";
+import AdminRoute from "./AdminRoute";
 
 
 const router = createBrowserRouter([
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
       //admin route
       {
         path: 'menageUsers',
-        element: <MenageUsers></MenageUsers>
+        element: <AdminRoute><MenageUsers></MenageUsers></AdminRoute>
       },
       //normal user
       {
