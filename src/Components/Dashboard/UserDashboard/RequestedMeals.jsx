@@ -6,10 +6,12 @@ import useCart from "../../../Hooks/useCart";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import '../../../index.css'
 import DashboardTitle from "../../../Shared/SectionTitle/DashboardTitle";
+import useReview from "../../../Hooks/useReview";
 
 
 const RequestedMeals = () => {
     const [cart, refetch] = useCart()
+    const [review] = useReview()
     const axiosPublic = useAxiosPublic()
     const totalPrice = cart.reduce((total, item) => total + item.price, 0)
     const handleDelete = id => {
@@ -104,7 +106,7 @@ const RequestedMeals = () => {
                                     {item?.like}
                                 </td>
                                 <td>
-                                    {item?.review}
+                                    {review?.length}
                                 </td>
                                 <td>
                                     $ {item?.price}

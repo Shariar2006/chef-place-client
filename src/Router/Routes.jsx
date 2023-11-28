@@ -8,6 +8,8 @@ import AllMeals from "../Components/Pages/AllMeals/AllMeals";
 import DashboardLayout from "../Components/Dashboard/DashboardLayout";
 import RequestedMeals from "../Components/Dashboard/UserDashboard/RequestedMeals";
 import PrivateRoute from "./PrivateRoute";
+import MyReview from "../Components/Dashboard/UserDashboard/MyReview";
+import MyProfile from "../Components/Dashboard/UserDashboard/MyProfile";
 
 
 const router = createBrowserRouter([
@@ -48,7 +50,15 @@ const router = createBrowserRouter([
       {
         path: 'requestedMeals',
         element: <RequestedMeals></RequestedMeals>
-      }
+      },
+      {
+        path: 'myProfile',
+        element: <MyProfile></MyProfile>
+      },
+      {
+        path: 'myReview',
+        element: <MyReview></MyReview>
+      },
     ]
   },
 ]);

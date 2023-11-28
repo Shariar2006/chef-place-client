@@ -20,8 +20,8 @@ const DashboardLayout = () => {
                         <li className="hover:text-[#EB671C] hover:bg-[#FFF1B0] rounded-md"><NavLink to='/dashboard/requestedMeals' className=''>
                             <FaCartShopping /> Requested Meals</NavLink></li>
 
-                        <li className="hover:text-[#EB671C] hover:bg-[#FFF1B0] rounded-md"><NavLink to='/dashboard/review' className=''>
-                            <VscPreview /> Add Review</NavLink></li>
+                        <li className="hover:text-[#EB671C] hover:bg-[#FFF1B0] rounded-md"><NavLink to='/dashboard/myReview' className=''>
+                            <VscPreview /> My Review</NavLink></li>
 
                             
                         {/* <div className="divider text-[#FFF1B0]"></div> */}
