@@ -1,5 +1,4 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { Rating } from "@smastrom/react-rating";
 import '../../../index.css'
@@ -9,8 +8,11 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../../AuthContext/AuthProvider";
 import useCart from "../../../Hooks/useCart";
 import DashboardTitle from "../../../Shared/SectionTitle/DashboardTitle";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const MealDetails = () => {
+    const axiosSecure = useAxiosSecure()
     const axiosPublic = useAxiosPublic()
     const { user } = useContext(AuthContext)
     // const { name, recipe, image, price, _id } = item || {}
@@ -34,6 +36,7 @@ const MealDetails = () => {
             const cartItem = {
                 menuId: data._id,
                 email: user.email,
+                userName: user.displayName,
                 name: data.name,
                 image: data.image,
                 price: data.price,
@@ -41,7 +44,7 @@ const MealDetails = () => {
                 review: 0,
                 status: 'Pending'
             }
-            axiosPublic.post('/carts', cartItem)
+            axiosSecure.post('/carts', cartItem)
                 .then(res => {
                     console.log(res, res.data)
                     if (res.data.insertedId) {
@@ -88,7 +91,7 @@ const MealDetails = () => {
                 review: review
             }
             console.log(reviewItem)
-            axiosPublic.post('/review', reviewItem)
+            axiosSecure.post('/review', reviewItem)
                 .then(res => {
                     console.log(res, res.data)
                     if (res.data.insertedId) {

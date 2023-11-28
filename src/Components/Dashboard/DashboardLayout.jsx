@@ -8,10 +8,11 @@ import { TfiEmail } from "react-icons/tfi";
 import { NavLink, Outlet } from 'react-router-dom';
 import logo from '../../../public/logo.png'
 import { FaUsers } from "react-icons/fa";
-import useIsAdmin from "../../Hooks/useIsAdmin";
+// import useIsAdmin from "../../Hooks/useIsAdmin";
 
 const DashboardLayout = () => {
-    const [isAdmin] = useIsAdmin()
+    const isAdmin = true
+    // const [isAdmin] = useIsAdmin()
     return (
         <div>
             <div className="flex max-w-7xl mx-auto">
@@ -30,7 +31,7 @@ const DashboardLayout = () => {
                                 <li className="hover:text-[#EB671C] hover:bg-[#FFF1B0] rounded-md"><NavLink to='/dashboard/addMeal' className=''>
                                 <FaUtensils /> Add Meal</NavLink></li>
 
-                                <li className="hover:text-[#EB671C] hover:bg-[#FFF1B0] rounded-md"><NavLink to='/dashboard/allMeals' className=''>
+                                <li className="hover:text-[#EB671C] hover:bg-[#FFF1B0] rounded-md"><NavLink to='/dashboard/adminAllMeals' className=''>
                                     <FaList/> All Meals</NavLink></li>
 
                                 <li className="hover:text-[#EB671C] hover:bg-[#FFF1B0] rounded-md"><NavLink to='/dashboard/allReviews' className=''>

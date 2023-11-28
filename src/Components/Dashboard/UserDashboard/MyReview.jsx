@@ -3,12 +3,12 @@ import useReview from "../../../Hooks/useReview";
 import DashboardTitle from "../../../Shared/SectionTitle/DashboardTitle";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import UpdateAReview from "./UpdateAReview";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 // import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const MyReview = () => {
-    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     // const axiosSecure = useAxiosSecure()
     const [review, reload] = useReview()
 
@@ -24,7 +24,7 @@ console.log(review)
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosPublic.delete(`/review/${id}`)
+                axiosSecure.delete(`/review/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({

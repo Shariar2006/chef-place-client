@@ -3,12 +3,12 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { FaEdit } from "react-icons/fa";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useReview from "../../../Hooks/useReview";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 const UpdateAReview = ({ reviewItem }) => {
-    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const [ , reload] = useReview()
     const { _id, review } = reviewItem || {}
 
@@ -20,7 +20,7 @@ const UpdateAReview = ({ reviewItem }) => {
             review: data.review
         }
         console.log(reviews)
-        const editReview = await axiosPublic.patch(`/review/${_id}`, reviews)
+        const editReview = await axiosSecure.patch(`/review/${_id}`, reviews)
         console.log(editReview.data)
         if (editReview.data.modifiedCount > 0) {
             reset()

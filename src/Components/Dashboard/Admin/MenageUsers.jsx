@@ -78,54 +78,54 @@ const MenageUsers = () => {
                     <h2 className="text-4xl font-semibold">All Users: {users.length}</h2>
                 </div>
                 <div className="overflow-x-auto">
-                    
-                            <table className="table text-lg">
-                                {/* head */}
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>User Name</th>
-                                        <th>Email</th>
-                                        <th>Status</th>
-                                        <th>Role</th>
-                                        <th>Delete User</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
 
-                                    {
-                                        users?.map((user, index) => <tr key={user._id}>
-                                            <th>
-                                                <label>
-                                                    {index + 1}
-                                                </label>
-                                            </th>
-                                            <td>
-                                                {user?.name}
-                                            </td>
-                                            <td className="font2 text-lg">
-                                                {user?.email}
-                                            </td>
-                                            <td>
-                                                {user?.badge}
-                                            </td>
-                                            <th>
-                                                {user?.role === 'admin' ? 'Admin' :
-                                                <button
-                                                    onClick={() => { handleMakeAdmin(user?._id) }}
-                                                    className="btn btn-ghost btn-lg text-[#EB671C]">Make Admin</button>
-                                                }
-                                            </th>
-                                            <th>
-                                                <button
-                                                    onClick={() => { handleDelete(user?._id) }}
-                                                    className="btn btn-ghost btn-lg text-red-500"><FaTrashCan /></button>
-                                            </th>
-                                        </tr>)
-                                    }
-                                </tbody>
-                            </table>
-                    
+                    <table className="table text-lg">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>User Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Role</th>
+                                <th>Delete User</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {
+                                users?.map((user, index) => <tr key={user._id}>
+                                    <th>
+                                        <label>
+                                            {index + 1}
+                                        </label>
+                                    </th>
+                                    <td>
+                                        {user?.name}
+                                    </td>
+                                    <td className="font2 text-lg">
+                                        {user?.email}
+                                    </td>
+                                    <td>
+                                        {user?.badge}
+                                    </td>
+                                    <th>
+                                        {user?.role === 'admin' ? 'Admin' :
+                                            <button
+                                                onClick={() => { handleMakeAdmin(user?._id) }}
+                                                className="btn btn-ghost btn-lg text-[#EB671C]">Make Admin</button>
+                                        }
+                                    </th>
+                                    <th>
+                                        <button
+                                            onClick={() => { handleDelete(user?._id) }}
+                                            className="btn btn-ghost btn-lg text-red-500"><FaTrashCan /></button>
+                                    </th>
+                                </tr>)
+                            }
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
         </div>

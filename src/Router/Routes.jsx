@@ -12,6 +12,8 @@ import MyReview from "../Components/Dashboard/UserDashboard/MyReview";
 import MyProfile from "../Components/Dashboard/UserDashboard/MyProfile";
 import MenageUsers from "../Components/Dashboard/Admin/MenageUsers";
 import AdminRoute from "./AdminRoute";
+import AdminAllMeal from "../Components/Dashboard/Admin/AdminAllMeal";
+import ServeMeal from "../Components/Dashboard/Admin/ServeMeal";
 
 
 const router = createBrowserRouter([
@@ -52,6 +54,14 @@ const router = createBrowserRouter([
       {
         path: 'menageUsers',
         element: <AdminRoute><MenageUsers></MenageUsers></AdminRoute>
+      },
+      {
+        path: 'adminAllMeals',
+        element: <AdminAllMeal></AdminAllMeal>
+      },
+      {
+        path: 'serveMeals',
+        element: <ServeMeal></ServeMeal>
       },
       //normal user
       {

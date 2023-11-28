@@ -1,18 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
 import { FaTrashCan } from "react-icons/fa6";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useCart from "../../../Hooks/useCart";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import '../../../index.css'
 import DashboardTitle from "../../../Shared/SectionTitle/DashboardTitle";
 import useReview from "../../../Hooks/useReview";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 const RequestedMeals = () => {
     const [cart, refetch] = useCart()
     const [review] = useReview()
-    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const totalPrice = cart.reduce((total, item) => total + item.price, 0)
     const handleDelete = id => {
         Swal.fire({
@@ -25,7 +24,7 @@ const RequestedMeals = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosPublic.delete(`/carts/${id}`)
+                axiosSecure.delete(`/carts/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
@@ -96,7 +95,7 @@ const RequestedMeals = () => {
                                                 {item?.name}
                                             </td>
                                             <td>
-                                                <button className="text-red-600">{item?.status}</button>
+                                                <h1>{item?.status}</h1>
                                             </td>
                                             <td>
                                                 {item?.like}
