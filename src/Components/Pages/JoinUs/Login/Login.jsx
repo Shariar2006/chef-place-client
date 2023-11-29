@@ -28,7 +28,7 @@ const Login = () => {
                 if (result.user) {
                     navigate(form, { replace: true })
                 }
-                Swal("Good job!", "You are successfully Logged in!", "success");
+                // Swal("Good job!", "You are successfully Logged in!", "success");
             })
             .catch(error => { console.log(error) })
     }

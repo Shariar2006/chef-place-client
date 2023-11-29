@@ -140,6 +140,8 @@ const MealDetails = () => {
                             value={data?.rating}
                             readOnly
                         />
+                        <p className=" text-[#c6ba88] font2">{data?.description}</p>
+
                         <p className=" text-[#FFF1B0] font3">Likes : {data?.like}</p>
                         <p className=" text-[#FFF1B0] font3">Review : {data?.review}</p>
 

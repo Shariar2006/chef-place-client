@@ -54,12 +54,6 @@ const AllMeals = () => {
                 }
             </div>
 
-            {/* {
-                allJobs?.filter((jobsCard) => {
-                    return search.toLocaleLowerCase() === '' ? jobsCard : jobsCard?.jobTitle.toLocaleLowerCase().includes(search)
-                }).map(jobsCard => <AllJobsTable key={jobsCard?._id} jobsCard={jobsCard}></AllJobsTable>)
-            } */}
-
         </div>
     );
 };

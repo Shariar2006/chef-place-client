@@ -40,12 +40,13 @@ const ServeMeal = () => {
                         refetch()
                     }
                 })
-        } else {
+        } else if(cart?.status !== 'Pending'){
+
             Swal.fire({
-                title: "Serve!",
-                text: "This food is Serve now",
-                icon: "success"
-            });
+                icon: "error",
+                title: "Oops...",
+                text: "This food already served!",
+              });
         }
 
     }
@@ -87,7 +88,7 @@ const ServeMeal = () => {
                                 cart?.filter((cartItem) => {
                                     return search.toLocaleLowerCase() === '' ? cartItem : cartItem?.email.toLocaleLowerCase().includes(search) || cartItem?.userName.toLocaleLowerCase().includes(search) 
                                     // || parseInt(menuItem?.price).includes(search)
-                                })?.map((item, index) => <tr key={item._id}>
+                                }).map((item, index) => <tr key={item._id}>
                                     <th>
                                         <label>
                                             {index + 1}

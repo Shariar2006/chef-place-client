@@ -5,13 +5,14 @@ import useCart from "../../../Hooks/useCart";
 import '../../../index.css'
 import DashboardTitle from "../../../Shared/SectionTitle/DashboardTitle";
 import useReview from "../../../Hooks/useReview";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+// import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 
 const RequestedMeals = () => {
     const [cart, refetch] = useCart()
     const [review] = useReview()
-    const axiosSecure = useAxiosSecure()
+    const axiosSecure = useAxiosPublic()
     const totalPrice = cart.reduce((total, item) => total + item.price, 0)
     const handleDelete = id => {
         Swal.fire({

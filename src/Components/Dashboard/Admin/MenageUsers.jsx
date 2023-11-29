@@ -1,13 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useQuery } from "@tanstack/react-query";
 import DashboardTitle from "../../../Shared/SectionTitle/DashboardTitle";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+// import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import '../../../index.css'
 import { FaTrashCan } from "react-icons/fa6";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const MenageUsers = () => {
-    const axiosSecure = useAxiosSecure()
+    const axiosSecure = useAxiosPublic()
     console.log(axiosSecure)
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],

@@ -14,6 +14,9 @@ import MenageUsers from "../Components/Dashboard/Admin/MenageUsers";
 import AdminRoute from "./AdminRoute";
 import AdminAllMeal from "../Components/Dashboard/Admin/AdminAllMeal";
 import ServeMeal from "../Components/Dashboard/Admin/ServeMeal";
+import AddMeals from "../Components/Dashboard/Admin/AddMeals";
+import UpcomingMeals from "../Components/Pages/UpcomingMeals/UpcomingMeals";
+import AdminUpcomingMeals from "../Components/Dashboard/Admin/AdminUpcomingMeals";
 
 
 const router = createBrowserRouter([
@@ -32,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: '/allMeals',
         element: <AllMeals></AllMeals>
+      },
+      {
+        path: '/upcomingMeals',
+        element: <UpcomingMeals></UpcomingMeals>
       },
 
     ]
@@ -57,11 +64,19 @@ const router = createBrowserRouter([
       },
       {
         path: 'adminAllMeals',
-        element: <AdminAllMeal></AdminAllMeal>
+        element: <AdminRoute><AdminAllMeal></AdminAllMeal></AdminRoute>
       },
       {
         path: 'serveMeals',
-        element: <ServeMeal></ServeMeal>
+        element: <AdminRoute><ServeMeal></ServeMeal></AdminRoute>
+      },
+      {
+        path: 'addMeal',
+        element: <AdminRoute><AddMeals></AddMeals></AdminRoute>
+      },
+      {
+        path: 'adminUpcomingMeals',
+        element: <AdminRoute><AdminUpcomingMeals></AdminUpcomingMeals></AdminRoute>
       },
       //normal user
       {

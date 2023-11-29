@@ -5,12 +5,16 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import { LuLogOut } from "react-icons/lu";
 import useIsAdmin from "../../Hooks/useIsAdmin";
+import { IoNotificationsSharp } from "react-icons/io5";
+import useUpcoming from "../../Hooks/useUpcoming";
+
 
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
     const [isAdmin] = useIsAdmin()
+    const [upcomingMeal] = useUpcoming()
 
     const handleLogOut = () => {
         logOut()
@@ -25,7 +29,11 @@ const Navbar = () => {
         >Meals</NavLink></li>
         <li><NavLink to={'/upcomingMeals'}
             className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#FFF1B0] text-lg font-semibold rounded-lg px-1 py-2 " : "mx-1 text-[#EB671C]"}
-        >Upcoming Meals</NavLink></li>
+        ><p className="flex">
+            <p className="text-xl"><IoNotificationsSharp/></p>
+        <h4 className="badge">+{upcomingMeal?.length}</h4>
+        </p>
+      </NavLink></li>
 
 
 
@@ -76,7 +84,8 @@ const Navbar = () => {
                                         {
                                             user && isAdmin ? <NavLink to={'/dashboard/menageUsers'}><button className="btn text-[#EB671C]">Dashboard</button></NavLink> :
                                         <NavLink to={'/dashboard/requestedMeals'}><button className="btn text-[#EB671C]">Dashboard</button></NavLink>
-                                        }
+                                    }
+                                    {/* <NavLink to={'/dashboard/requestedMeals'}><button className="btn text-[#EB671C]">Dashboard</button></NavLink> */}
                                         <button onClick={handleLogOut}
                                             className="text-[#EB671C] btn"
                                         > <LuLogOut className="text-xl font-bold"></LuLogOut>

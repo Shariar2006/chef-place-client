@@ -8,11 +8,17 @@ import { TfiEmail } from "react-icons/tfi";
 import { NavLink, Outlet } from 'react-router-dom';
 import logo from '../../../public/logo.png'
 import { FaUsers } from "react-icons/fa";
-// import useIsAdmin from "../../Hooks/useIsAdmin";
+import useIsAdmin from "../../Hooks/useIsAdmin";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthContext/AuthProvider";
 
 const DashboardLayout = () => {
-    const isAdmin = true
-    // const [isAdmin] = useIsAdmin()
+    // const isAdmin = true
+    const [isAdmin] = useIsAdmin()
+    const {loading} = useContext(AuthContext)
+    if(loading){
+        return <div><img className="mx-auto h-screen" src="https://i.pinimg.com/originals/e6/13/21/e613212546d6c27600379a26cd601365.gif?fbclid=IwAR0TUGpwTWQXokTxLrofEHs01aaJT-_ervC3pdTKbojufBHldwVX_fOiu44" alt="" /></div>
+    }
     return (
         <div>
             <div className="flex max-w-7xl mx-auto">
@@ -40,7 +46,7 @@ const DashboardLayout = () => {
                                 <li className="hover:text-[#EB671C] hover:bg-[#FFF1B0] rounded-md"><NavLink to='/dashboard/serveMeals' className=''>
                                 <FaBook /> Serve Meals</NavLink></li>
 
-                                <li className="hover:text-[#EB671C] hover:bg-[#FFF1B0] rounded-md"><NavLink to='/dashboard/upcomingMeals' className=''>
+                                <li className="hover:text-[#EB671C] hover:bg-[#FFF1B0] rounded-md"><NavLink to='/dashboard/adminUpcomingMeals' className=''>
                                 <MdUpcoming /> Upcoming Meals</NavLink></li>
                             </> :
                                 <>
