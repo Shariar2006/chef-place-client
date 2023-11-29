@@ -8,7 +8,7 @@ const useUpcoming = () => {
     const {data: upcomingMeal = [], isPending: loading, refetch} = useQuery({
         queryKey: ['upcomingMeal'],
         queryFn: async()=>{
-            const res = await axiosPublic.get('/upcomingMeal')
+            const res = await axiosPublic?.get('/upcomingMeal')
             return res.data
         }
     })

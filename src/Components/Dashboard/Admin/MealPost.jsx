@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useUpcoming from "../../../Hooks/useUpcoming";
 
 const MealPost = ({ item }) => {
     const axiosPublic = useAxiosPublic()
+    const [, , refetch] = useUpcoming()
 
     const { _id, name, recipe, meal_distributor, email, category, rating, description, posted_time, posted_date, price, like, review, image, } = item || {}
 
@@ -25,11 +27,18 @@ const MealPost = ({ item }) => {
                     .then(res => {
                         console.log(res.data)
                         if (res.data.acknowledged > 0) {
-                            Swal.fire({
-                                title: "Meal add!",
-                                text: "Added this meal",
-                                icon: "success"
-                            });
+                            
+                            axiosPublic.delete(`/upcomingMeal/${id}`)
+                                .then(res => {
+                                    if (res.data.deletedCount > 0) {
+                                        Swal.fire({
+                                            title: "Meal add!",
+                                            text: "Added this meal",
+                                            icon: "success"
+                                        });
+                                        refetch()
+                                    }
+                                })
                         }
                     })
             }

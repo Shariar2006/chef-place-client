@@ -3,10 +3,39 @@ import useMenu from "../../../Hooks/useMenu";
 import DashboardTitle from "../../../Shared/SectionTitle/DashboardTitle";
 import '../../../index.css'
 import { FaEdit } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const AdminAllMeal = () => {
+    const axiosPublic = useAxiosPublic()
+    const [menu, , refetch] = useMenu()
 
-    const [menu] = useMenu()
+    const handleDelete = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosPublic.delete(`/meals/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "This food has been deleted.",
+                                icon: "success"
+                            });
+                            refetch()
+                        }
+                    })
+            }
+        });
+    }
+
     return (
         <div className="font3 text-[#F6E9B1]">
             <DashboardTitle subTitle="Hurry Up" headerTitle='Menage All Meals'></DashboardTitle>
@@ -53,7 +82,7 @@ const AdminAllMeal = () => {
                                             </th>
                                             <th>
                                                 <button
-                                                    // onClick={() => { handleDelete(user?._id) }}
+                                                    onClick={() => { handleDelete(menuItem?._id) }}
                                                     className="btn btn-ghost btn-lg text-red-500"><FaTrashCan /></button>
                                             </th>
                                         </tr>)
