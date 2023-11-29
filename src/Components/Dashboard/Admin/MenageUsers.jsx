@@ -8,12 +8,12 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const MenageUsers = () => {
-    const axiosSecure = useAxiosPublic()
-    console.log(axiosSecure)
+    const axiosPublic = useAxiosPublic()
+    console.log(axiosPublic)
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/allUsers');
+            const res = await axiosPublic.get('/allUsers');
             return res.data
         }
     })
@@ -30,7 +30,7 @@ const MenageUsers = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.delete(`/users/${id}`)
+                axiosPublic.delete(`/users/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
@@ -56,7 +56,7 @@ const MenageUsers = () => {
             confirmButtonText: "Yes, I want!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.patch(`/users/${id}`)
+                axiosPublic.patch(`/users/${id}`)
                     .then(res => {
                         if (res.data.modifiedCount > 0) {
                             Swal.fire({

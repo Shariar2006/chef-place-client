@@ -16,7 +16,11 @@ const MyProfile = () => {
                 singleUser?.map((user) => 
                     <div key={user._id} className="hero pt-20">
                         <div className="hero-content flex-col lg:flex-row ">
-                            <img src={user?.photo} className="lg:mr-10 w-72  rounded-full shadow-2xl" />
+                            {
+                                user?.photo ? 
+                                <img src={user?.photo} className="lg:mr-10 w-72  rounded-full shadow-2xl" /> :
+                                <img className="lg:mr-10 w-72  rounded-full shadow-2xl" src='https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg' alt="" />
+                            }
                             <div className="space-y-2">
                                 {
                                     singleUser?.map(userBadge=><ProfileBage key={userBadge._id} userBadge={userBadge}></ProfileBage>)
