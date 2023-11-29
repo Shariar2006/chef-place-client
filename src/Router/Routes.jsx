@@ -17,6 +17,7 @@ import ServeMeal from "../Components/Dashboard/Admin/ServeMeal";
 import AddMeals from "../Components/Dashboard/Admin/AddMeals";
 import UpcomingMeals from "../Components/Pages/UpcomingMeals/UpcomingMeals";
 import AdminUpcomingMeals from "../Components/Dashboard/Admin/AdminUpcomingMeals";
+import UpdateMeal from "../Components/Dashboard/Admin/UpdateMeal";
 
 
 const router = createBrowserRouter([
@@ -77,6 +78,11 @@ const router = createBrowserRouter([
       {
         path: 'adminUpcomingMeals',
         element: <AdminRoute><AdminUpcomingMeals></AdminUpcomingMeals></AdminRoute>
+      },
+      {
+        path: 'updateMeal/:id',
+        element: <AdminRoute><UpdateMeal></UpdateMeal></AdminRoute>,
+        loader: ({params})=> fetch(`http://localhost:5000/meal/${params.id}`)
       },
       //normal user
       {
