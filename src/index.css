@@ -13,6 +13,10 @@
     background: transparent;
 }
 
+.memberShip{
+    background-image: url('https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2019/08/07/Pictures/_ec38addc-b906-11e9-a203-e6c4ad816de5.jpg');
+    background-size: cover;
+}
 
 .font1{
     font-family: 'Zen Tokyo Zoo', cursive;

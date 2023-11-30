@@ -18,6 +18,8 @@ import AddMeals from "../Components/Dashboard/Admin/AddMeals";
 import UpcomingMeals from "../Components/Pages/UpcomingMeals/UpcomingMeals";
 import AdminUpcomingMeals from "../Components/Dashboard/Admin/AdminUpcomingMeals";
 import UpdateMeal from "../Components/Dashboard/Admin/UpdateMeal";
+import CheckOut from "../Components/Pages/CheckOut/CheckOut";
+import AdminProfile from "../Components/Dashboard/Admin/AdminProfile";
 
 
 const router = createBrowserRouter([
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/meal/:id',
         element: <MealDetails></MealDetails>
+      },
+      {
+        path: '/checkOut/:badge',
+        element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
       },
       {
         path: '/allMeals',
@@ -52,6 +58,10 @@ const router = createBrowserRouter([
     path: '/register',
     element: <Register></Register>
   },
+  {
+    path: '*',
+    element: <img className="mx-auto h-screen" src="https://cdn.dribbble.com/users/189859/screenshots/3639645/abc.gif" alt="" />
+  },
   //dashboard
   {
     path: '/dashboard',
@@ -59,6 +69,10 @@ const router = createBrowserRouter([
     children: [
 
       //admin route
+      {
+        path: 'adminProfile',
+        element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
+      },
       {
         path: 'menageUsers',
         element: <AdminRoute><MenageUsers></MenageUsers></AdminRoute>

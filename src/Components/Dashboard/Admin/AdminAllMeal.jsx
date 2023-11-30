@@ -56,6 +56,7 @@ const AdminAllMeal = () => {
                                 <th>Email</th>
                                 <th>Update</th>
                                 <th>Delete</th>
+                                <th>Meal Details</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -87,6 +88,9 @@ const AdminAllMeal = () => {
                                         <button
                                             onClick={() => { handleDelete(menuItem?._id) }}
                                             className="btn btn-ghost btn-lg text-red-500"><FaTrashCan /></button>
+                                    </th>
+                                    <th>
+                                    <Link to={`/meal/${menuItem._id}`}><button className="btn">View Details</button></Link>
                                     </th>
                                 </tr>)
                             }
