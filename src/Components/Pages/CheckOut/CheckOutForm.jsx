@@ -4,6 +4,7 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../AuthContext/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const CheckOutForm = () => {
@@ -75,6 +76,13 @@ const CheckOutForm = () => {
             console.log('paymentIntent', paymentIntent)
             if (paymentIntent.status === 'succeeded') {
                 setTrangictionId(paymentIntent.id)
+                Swal.fire({
+                    icon: "success",
+                    title: "Good job!",
+                    text: "You are successfully payment!",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
                 // const payment = {
                 //     email: user?.email ,
                 //     badge: data?.badge

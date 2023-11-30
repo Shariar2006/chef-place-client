@@ -37,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/checkOut/:badge',
-        element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
+        element: <CheckOut></CheckOut>
       },
       {
         path: '/allMeals',
