@@ -6,8 +6,8 @@
 - There are 3 packages available.
 - Each package has different features.
 
-  ### Admin-
-  - Every admin can add any food.
-  - An admin can make another admin.
-  - Admin can delete a food if he wants.
+### Admin-
+- Every admin can add any food.
+- An admin can make another admin.
+- Admin can delete a food if he wants.
     
