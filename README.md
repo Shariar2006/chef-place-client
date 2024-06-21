@@ -1,8 +1,13 @@
-# React + Vite
+# Chef's Place
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Normal User-
+- Here the food of the user's hostel is managed.
+- If a user needs to request a meal, he/she needs to login and purchase a package.
+- There are 3 packages available.
+- Each package has different features.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Admin-
+- Every admin can add any food.
+- An admin can make another admin.
+- Admin can delete a food if he wants.
+    
