@@ -5,7 +5,7 @@ import { AuthContext } from "../AuthContext/AuthProvider";
 
 
 const axiosSecure = axios.create({
-    baseURL: 'https://chef-place-server.vercel.app'
+    baseURL: 'http://localhost:5000'
 })
 
 const useAxiosSecure = () => {

@@ -4,7 +4,7 @@ import MemberShip from "./MemberShip";
 
 const Home = () => {
     return (
-        <div>
+        <div >
             <Banner></Banner>
             <MealsTabCategory></MealsTabCategory>
             <MemberShip></MemberShip>

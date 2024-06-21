@@ -38,7 +38,7 @@ const AdminAllMeal = () => {
     }
 
     return (
-        <div className="font3 text-[#F6E9B1]">
+        <div className="font3  text-[#FFF1B0]">
             <DashboardTitle subTitle="Hurry Up" headerTitle='Menage All Meals'></DashboardTitle>
             <div className="overflow-x-auto lg:overflow-x-hidden">
                 <div className="w-11/12 mx-auto p-5 flex justify-between">

@@ -146,21 +146,6 @@ const AddMeals = () => {
                         <textarea className="textarea textarea-bordered h-24" {...register("description")} placeholder="details"></textarea>
                     </div>
 
-                    {/* <div className="flex gap-5">
-                        <div className="form-control w-full ">
-                            <label className="label">
-                                <span className="label-text">Review</span>
-                            </label>
-                            <input type="number" disabled defaultValue='0'  {...register("review")} className="input input-bordered w-full " />
-                        </div>
-                        <div className="form-control w-full ">
-                            <label className="label">
-                                <span className="label-text">Like</span>
-                            </label>
-                            <input type="number" disabled defaultValue='0'  {...register("like")} className="input input-bordered w-full " />
-                        </div>
-                    </div> */}
-
                     <div>
                         <input type="file" {...register("image")} className="file-input w-full max-w-xs" />
                     </div>

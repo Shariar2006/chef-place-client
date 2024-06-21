@@ -103,11 +103,11 @@ const ServeMeal = () => {
                                     <td className="font2">
                                         {item?.email}
                                     </td>
-                                    <td className="text-[#F6E9B1]">
+                                    <td className="text-[#320E0E] dark:text-[#F6E9B1]">
                                         {
                                             item?.status !== 'delivered' ?
                                                 <h1 className="text-red-600">{item?.status}</h1> :
-                                                <h1 className="text-[#F6E9B1]">{item?.status}</h1>
+                                                <h1 className="text-[#F6E9B0]">{item?.status}</h1>
                                         }
                                     </td>
                                     <th>

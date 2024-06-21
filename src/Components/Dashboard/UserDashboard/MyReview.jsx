@@ -10,7 +10,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 const MyReview = () => {
     const axiosSecure = useAxiosSecure()
     // const axiosSecure = useAxiosSecure()
-    const [review, reload] = useReview()
+    const [review, reload] = useReview
 
 console.log(review)
     const handleDelete = id => {
@@ -43,7 +43,7 @@ console.log(review)
 
 
     return (
-        <div className="font3 text-[#F6E9B1]">
+        <div className="font3 text-[#320E0E] dark:text-[#F6E9B1]">
             <DashboardTitle subTitle='your Requested Meals' headerTitle='See your all review'></DashboardTitle>
             <div className="w-11/12 mx-auto p-5 flex justify-between">
                 <h2 className="text-4xl font-semibold">Total Review: {review.length}</h2>

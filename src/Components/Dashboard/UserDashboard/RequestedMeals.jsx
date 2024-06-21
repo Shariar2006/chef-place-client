@@ -40,7 +40,7 @@ const RequestedMeals = () => {
         });
     }
     return (
-        <div className="font3 text-[#F6E9B1]">
+        <div className="font3 text-[#320E0E] dark:text-[#F6E9B1]">
             <DashboardTitle subTitle='your Requested Meals' headerTitle='WANNA ADD MORE ?'></DashboardTitle>
             
             <div className="overflow-x-auto lg:overflow-x-hidden">

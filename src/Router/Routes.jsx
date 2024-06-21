@@ -96,7 +96,7 @@ const router = createBrowserRouter([
       {
         path: 'updateMeal/:id',
         element: <AdminRoute><UpdateMeal></UpdateMeal></AdminRoute>,
-        loader: ({params})=> fetch(`https://chef-place-server.vercel.app/meal/${params.id}`)
+        loader: ({params})=> fetch(`http://localhost:5000/meal/${params.id}`)
       },
       //normal user
       {

@@ -9,6 +9,12 @@
     backdrop-filter: blur(20px);
 }
 
+.navbarTransparent{
+    background: transparent;
+    box-shadow: 0,0,10px rgba(0, 0, 0, .2);
+    backdrop-filter: blur(20px);
+}
+
 .inputFild{
     background: transparent;
 }

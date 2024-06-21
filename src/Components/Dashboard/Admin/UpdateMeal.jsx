@@ -40,6 +40,7 @@ const UpdateMeal = () => {
                 image: image || res?.data?.data?.display_url
                 }
         console.log(menuItem)
+        
         const menuRes = await axiosPublic.patch(`/meal/${_id}`, menuItem)
         console.log(menuRes.data)
         if (menuRes.data.modifiedCount > 0) {
