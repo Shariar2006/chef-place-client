@@ -30,7 +30,13 @@ const Login = () => {
                 }
                 // Swal("Good job!", "You are successfully Logged in!", "success");
             })
-            .catch(error => { console.log(error) })
+            .catch(error => { 
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: `${error.code}`,
+                });
+                console.log(error.code) })
     }
 
     const loginWithGoogle = () => {

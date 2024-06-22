@@ -30,7 +30,7 @@ const Register = () => {
                 axiosPublic.post('/users', userInfo)
                     .then(res => {
                         if (res.data.insertedId) {
-                            
+
                             Swal.fire({
                                 position: "top-end",
                                 icon: "success",
@@ -38,7 +38,7 @@ const Register = () => {
                                 showConfirmButton: false,
                                 timer: 1500
                             });
-                            
+
                             logOut()
                             navigate('/login')
                         }
@@ -46,7 +46,14 @@ const Register = () => {
                     })
 
             })
-            .catch(err => { console.log(err) })
+            .catch(err => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: `${err.code}`,
+                });
+                console.log(err.code)
+            })
     }
 
 
@@ -74,9 +81,9 @@ const Register = () => {
                         <label className="label">
                             <span className="label-text text-[#FFF1B0] text-xl font-bold">Password</span>
                         </label>
-                        <input type="password" {...register("password", { required: true, maxLength: 20, minLength: 6, pattern: /(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}/ })} name='password' placeholder="Password" className="inputFild font2 input text-[#FFF1B0] text-lg font-semibold input-bordered" />
+                        <input type="password" {...register("password", { required: true, maxLength: 20, minLength: 8, pattern: /(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}/ })} name='password' placeholder="Password" className="inputFild font2 input text-[#FFF1B0] text-lg font-semibold input-bordered" />
                         {errors.password?.type === 'required' && <span className="text-red-600 font-bold mt-1">Password is required</span>}
-                        {errors.password?.type === 'minLength' && <span className="text-red-600 font-bold mt-1">Password must be 6 characters</span>}
+                        {errors.password?.type === 'minLength' && <span className="text-red-600 font-bold mt-1">Password must be 8 characters</span>}
                         {errors.password?.type === 'maxLength' && <span className="text-red-600 font-bold mt-1">Password maximum 20 characters</span>}
                         {errors.password?.type === 'pattern' && <span className="text-red-600 font-bold mt-1">Password must be one uppercase, one lowercase,one number and one special characters</span>}
                     </div>
