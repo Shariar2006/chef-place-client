@@ -2,13 +2,14 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import login from '../../../../../public/joinUs1.jpg'
 import '../../../../index.css'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../../../AuthContext/AuthProvider';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 
 
 const Login = () => {
+    const [show, setShow] = useState(false)
     const { loginUser, googleLogin } = useContext(AuthContext)
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate();
@@ -81,8 +82,9 @@ const Login = () => {
                         <label className="label">
                             <span className="label-text text-[#FFF1B0] text-xl font-bold">Password</span>
                         </label>
-                        <input type="password" name='password' placeholder="Password" className="font2 inputFild input
+                        <input type={show ? 'text' : 'password'} name='password' placeholder="Password" className="font2 inputFild input
                     text-[#FFF1B0] text-lg font-semibold input-bordered" required />
+                    <button onClick={()=>{setShow(!show)}} className='absolute z-10 mt-14 right-12'>{show ? 'hide' : 'show'}</button>
                     </div>
                     <div>
                         <input className='btn border-none bg-[#FFF1B0] hover:bg-[#EB671C] text-center text-[#EB671C] hover:text-[#FFF1B0] py-3 rounded-lg text-xl font-bold w-full my-4' type="submit" value="Login" />
