@@ -6,6 +6,8 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../../../AuthContext/AuthProvider';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 
 const Login = () => {
@@ -70,7 +72,7 @@ const Login = () => {
         <div className='relative font3'>
 
             <div className='absolute flex flex-col justify-center items-center bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)] min-h-screen right-0 left-0'>
-                <form onSubmit={handleLogin} className=" py-8 px-10 rounded-lg transparent">
+                <form onSubmit={handleLogin} className="max-w-[430px] py-8 px-10 rounded-lg transparent">
                     <p className=' text-[#FFF1B0] text-4xl text-center font-bold mb-5'>Log In now!</p>
                     <div className="form-control">
                         <label className="label">
@@ -84,7 +86,7 @@ const Login = () => {
                         </label>
                         <input type={show ? 'text' : 'password'} name='password' placeholder="Password" className="font2 inputFild input
                     text-[#FFF1B0] text-lg font-semibold input-bordered" required />
-                    <button onClick={()=>{setShow(!show)}} className='absolute z-10 mt-14 right-12'>{show ? 'hide' : 'show'}</button>
+                    <button onClick={()=>{setShow(!show)}} className='absolute z-10 mt-14 right-12'>{show ? <FaEye/> : <FaEyeSlash/>}</button>
                     </div>
                     <div>
                         <input className='btn border-none bg-[#FFF1B0] hover:bg-[#EB671C] text-center text-[#EB671C] hover:text-[#FFF1B0] py-3 rounded-lg text-xl font-bold w-full my-4' type="submit" value="Login" />

@@ -7,6 +7,9 @@ import Swal from "sweetalert2";
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../../AuthContext/AuthProvider';
 import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
+
 
 
 const Register = () => {
@@ -83,7 +86,7 @@ const Register = () => {
                             <span className="label-text text-[#FFF1B0] text-xl font-bold">Password</span>
                         </label>
                         <input type={show ? 'text' : 'password'} {...register("password", { required: true, maxLength: 20, minLength: 8, pattern: /(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}/ })} name='password' placeholder="Password" className="inputFild font2 input text-[#FFF1B0] text-lg font-semibold input-bordered" />
-                        <button onClick={()=>{setShow(!show)}} className='absolute z-10 mt-14 right-12'>{show ? 'hide' : 'show'}</button>
+                        <button onClick={()=>{setShow(!show)}} className='absolute z-10 mt-14 right-12'>{show ? <FaEye/> : <FaEyeSlash/>}</button>
                         {errors.password?.type === 'required' && <span className="text-red-600 font-bold mt-1">Password is required</span>}
                         {errors.password?.type === 'minLength' && <span className="text-red-600 font-bold mt-1">Password must be 8 characters</span>}
                         {errors.password?.type === 'maxLength' && <span className="text-red-600 font-bold mt-1">Password maximum 20 characters</span>}
